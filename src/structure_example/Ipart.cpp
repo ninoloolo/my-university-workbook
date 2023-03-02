@@ -1,5 +1,9 @@
 #include <cstdio>
+#include <iostream>
 #include <cmath>
+
+using namespace std;
+
 
 struct SimpleStruct
 {
@@ -7,30 +11,41 @@ struct SimpleStruct
     unsigned int second;
 };
 
-void Read(SimpleStruct &obj)
-{
-    while (true) {
-        printf("Введіть позитивне число first = ");
-        if (scanf("%d", &obj.first) != 1 && obj.first > 0) {
-            printf("Ви ввели невірне значення. Введіть позитивне число!\n");
-        } else { break; }
-    }
 
-    while (true) {
-        printf("Введіть позитивне число second = ");
-        if (scanf("%d", &obj.second) != 1 && obj.second > 0) {
-            printf("Ви ввели невірне значення. Введіть позитивне число!\n");
-        } else { break; }
-    }
+void read_unsigned_int(unsigned int val, const char msg[]) {
+    // виводить повідомлення та читає доти, доки не буде введено валідне значення
+    const int _min = 0;
+
+    do {
+        // Один раз, або поки не запрацює читаємо ввід
+        cout << msg;
+        cin >> val;
+
+        if (cin.fail()) {
+            clog << endl << "Неправильний ввід" << endl; 
+            cin.clear();
+            cin.ignore(65535, '\n');
+        } else if (val < _min) {
+            clog << endl << "Має бути більшим за " << _min;
+        }
+
+    } while (val < _min);
 }
 
-void Display(SimpleStruct &obj) {
+
+void Read(SimpleStruct& obj)
+{
+    read_unsigned_int(obj.first, "Введіть позитивне число first = ");
+    read_unsigned_int(obj.first, "Введіть позитивне число second = ");
+}
+
+void Display(const SimpleStruct& obj) {
    printf("first= %d\n", obj.first);
    printf("second= %d\n", obj.second);
 };
 
 
-void Ipart(SimpleStruct &obj)
+void Ipart(SimpleStruct& obj)
 {
     double result = obj.first / obj.second;
     printf("%lf\n", result);
