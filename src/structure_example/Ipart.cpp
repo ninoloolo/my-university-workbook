@@ -1,33 +1,30 @@
 #include <cstdio>
 #include <cmath>
 
-
 struct SimpleStruct
 {
     unsigned int first;
-    unsigned int second = 0;
+    unsigned int second;
 };
 
 void Read(SimpleStruct &obj)
 {
-    printf("Введіть позитивне число first = ");
-    scanf("%d", &obj.first);
-    if (int(obj.first) > 0) {
-        printf("Введіть позитивне число second = ");
-        scanf("%d", &obj.second);
-        if (int(obj.second) > 0){
-        }
-        else{
-            printf("Ви ввели невірне значення. Перезапустіть програму, та введіть позитивне число!\n");
-        }
+    while (true) {
+        printf("Введіть позитивне число first = ");
+        if (scanf("%d", &obj.first) != 1 && obj.first > 0) {
+            printf("Ви ввели невірне значення. Введіть позитивне число!\n");
+        } else { break; }
     }
-    else{
-        printf("Ви ввели невірне значення. Перезапустіть програму, та введіть позитивне число!\n");
+
+    while (true) {
+        printf("Введіть позитивне число second = ");
+        if (scanf("%d", &obj.second) != 1 && obj.second > 0) {
+            printf("Ви ввели невірне значення. Введіть позитивне число!\n");
+        } else { break; }
     }
 }
 
-void Display(SimpleStruct &obj)
-{
+void Display(SimpleStruct &obj) {
    printf("first= %d\n", obj.first);
    printf("second= %d\n", obj.second);
 };
