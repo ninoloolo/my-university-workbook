@@ -27,8 +27,8 @@ void Display(const SimpleStruct& obj) {
 
 void Clock(SimpleStruct& obj)
 {
-    double result = obj.first * 60 + obj.second;
-    printf("Час в хвилинах = %f\n", result);
+    unsigned int result = obj.first * 60 + obj.second;
+    printf("Час в хвилинах = %d\n", result);
 };
 
 
