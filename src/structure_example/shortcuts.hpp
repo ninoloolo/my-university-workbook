@@ -5,23 +5,21 @@ using namespace std;
 
 unsigned int read_unsigned_int(const char msg[]) {
     // виводить повідомлення та читає доти, доки не буде введено валідне значення
-    const int _min = 0;
     unsigned int value;
+    bool read_fail = false;
 
     do {
         // Один раз, або поки не запрацює читаємо ввід
         cout << msg;
         cin >> value;
+        read_fail = cin.fail();
 
-        if (cin.fail()) {
+        if (read_fail) {
             clog << endl << "Неправильний ввід" << endl; 
             cin.clear();
             cin.ignore(65535, '\n');
-        } else if (value < _min) {
-            clog << endl << "Має бути більшим за " << _min;
-        }
-
-    } while (value < _min);
+        };
+    } while (read_fail);
 
     return value;
 }
