@@ -20,7 +20,7 @@ double read_double(const char msg[]) {
         cin >> value;
         read_fail = cin.fail();
 
-        if (read_fail or value <= 0) {
+        if (read_fail or value < 0) {
             clog << endl << "Неправильний ввід" << endl; 
             cin.clear();
             cin.ignore(65535, '\n');
@@ -29,9 +29,33 @@ double read_double(const char msg[]) {
 
     return value;
 
-
-void Read(SimpleStruct& obj){
-
+};
+void Read(SimpleStruct& obj)
+{
+    obj.first = read_double("Введіть перший катет трикутника = ");
+    obj.second = read_double("Введіть другий катет трикутника = ");
 }
 
+void Display(const SimpleStruct& obj) {
+   printf("катет а = %.2lf\n", obj.first);
+   printf("катет b = %.2lf\n", obj.second);
+};
+
+
+void Hipotenuse(SimpleStruct& obj)
+{
+    double result = sqrt(obj.first * obj.first + obj.second + obj.second);
+    printf("Гіпотенуза = %.3lf\n", result);
+};
+
+int main()
+{
+    SimpleStruct res;
+
+    Read(res);
+    Display(res);
+    Hipotenuse(res);
+
+    return 0;
+}
 
