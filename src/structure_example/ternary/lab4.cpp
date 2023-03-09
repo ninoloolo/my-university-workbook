@@ -1,5 +1,4 @@
 #include <cstdio>
-using namespace std;
 
 int main()
 {
@@ -15,15 +14,15 @@ int main()
     switch (oper) {
         case '+':
             printf("%.2f + %.2f = %.2f", num1, num2, num1 + num2);
-        break;
+            break;
 
         case '-':
             printf("%.2f - %.2f = %.2f", num1, num2, num1 - num2);
-        break;
+            break;
 
         case '*':
             printf("%.2f * %.2f = %.2f", num1, num2, num1 * num2);
-        break;
+            break;
 
         case '/':
             if (num2 == 0) {
@@ -32,11 +31,11 @@ int main()
             else {
                 printf("%.2f / %.2f = %.2f", num1, num2, num1 / num2);
             }
-        break;
+            break;
 
         default:
             printf("Невірний знак операції!");
-        break;
+            break;
     }
 
     return 0;
